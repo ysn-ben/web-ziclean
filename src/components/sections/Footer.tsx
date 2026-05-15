@@ -62,10 +62,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40 text-sm tracking-widest uppercase">
+        <div className="mt-32 pt-12 border-t border-white/5 flex flex-col items-center justify-center gap-8 opacity-40 text-sm tracking-widest uppercase text-center">
           <p>© {new Date().getFullYear()} ZiClean Natural Power.</p>
-          <div className="flex gap-10">
-          </div>
         </div>
       </div>
     </footer>
