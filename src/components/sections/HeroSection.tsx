@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ShoppingCart, CheckCircle2, Leaf, Droplets } from "lucide-react";
 
@@ -38,16 +38,10 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-              <Button 
-                size="lg" 
-                className="rounded-2xl px-10 text-xl h-16 shadow-xl shadow-primary/20 hover:scale-105 transition-all duration-300"
-                asChild
-              >
-                <a href="#order">
-                  <ShoppingCart className="ml-3 w-6 h-6" />
-                  اطلب الآن
-                </a>
-              </Button>
+              <a href="#order" className={buttonVariants({ size: "lg", className: "rounded-2xl px-10 text-xl h-16 shadow-xl shadow-primary/20 hover:scale-105 transition-all duration-300" })}>
+                <ShoppingCart className="ml-3 w-6 h-6" />
+                اطلب الآن
+              </a>
 
               <div className="flex flex-col">
                 <span className="text-3xl font-bold text-primary">230 دج</span>

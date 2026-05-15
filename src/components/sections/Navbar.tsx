@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Leaf } from "lucide-react";
 
 export default function Navbar() {
@@ -31,9 +31,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button asChild className="rounded-2xl px-8 h-12 text-sm font-bold shadow-lg shadow-primary/10 hover:scale-105 transition-transform">
-            <Link href="#order">اطلب الآن</Link>
-          </Button>
+          <Link href="#order" className={buttonVariants({ className: "rounded-2xl px-8 h-12 text-sm font-bold shadow-lg shadow-primary/10 hover:scale-105 transition-transform" })}>
+            اطلب الآن
+          </Link>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Package, Mail, Phone, CheckCircle2 } from "lucide-react";
 
 import { motion } from "framer-motion";
@@ -72,9 +72,7 @@ export default function WholesaleSection() {
                 </div>
                 <h3 className="text-3xl font-bold">اتصال مباشر</h3>
                 <p className="text-lg opacity-70">هل لديك طلب خاص أو مستعجل؟ فريقنا جاهز للرد على استفساراتكم.</p>
-                <Button variant="secondary" className="w-full h-16 rounded-2xl text-xl font-bold hover:scale-[1.02] transition-transform" asChild>
-                  <a href="#order">طلب عرض سعر</a>
-                </Button>
+                <a href="#order" className={buttonVariants({ variant: "secondary", className: "w-full h-16 rounded-2xl text-xl font-bold flex items-center justify-center hover:scale-[1.02] transition-transform" })}>طلب عرض سعر</a>
 
               </div>
             </motion.div>
