@@ -51,28 +51,33 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-32 bg-[var(--background)]">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-32 bg-[var(--background)] relative overflow-hidden">
+      {/* Premium organic abstract glow blobs */}
+      <div className="absolute top-1/4 left-0 w-[450px] h-[450px] bg-secondary/15 rounded-full blur-[120px] pointer-events-none -ml-40" />
+      <div className="absolute bottom-1/4 right-0 w-[450px] h-[450px] bg-primary/10 rounded-full blur-[140px] pointer-events-none -mr-40" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl lg:text-5xl font-bold text-foreground"
+            className="text-5xl lg:text-6xl font-black text-foreground tracking-tight"
           >
             سر النظافة الطبيعية
           </motion.h2>
+          <div className="w-24 h-1.5 bg-primary/80 rounded-full mx-auto" />
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground font-light"
+            className="text-xl text-muted-foreground font-light leading-relaxed"
           >
             نجمع بين قوة التنظيف القصوى والمكونات الطبيعية لنقدم لك الحل الأمثل لمنزلك ولعائلتك.
           </motion.p>
         </div>
-
+ 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
@@ -82,13 +87,14 @@ export default function FeaturesSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <Card className="border-none bg-white/50 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group rounded-[2rem]">
+              <Card className="border border-primary/5 bg-white/60 backdrop-blur-md shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-primary/20 transition-all duration-500 group rounded-[2.5rem] overflow-hidden">
                 <CardContent className="p-10 space-y-6">
-                  <div className={`w-16 h-16 rounded-2xl ${feature.bg} flex items-center justify-center group-hover:rotate-12 transition-transform duration-500`}>
-                    <feature.icon className={`w-8 h-8 ${feature.color}`} />
+                  {/* Icon Container with beautiful bounce and hover spin */}
+                  <div className={`w-16 h-16 rounded-2xl ${feature.bg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-inner`}>
+                    <feature.icon className={`w-8 h-8 ${feature.color} transition-transform`} />
                   </div>
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-foreground">{feature.title}</h3>
+                    <h3 className="text-2xl font-extrabold text-foreground group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
                     <p className="text-muted-foreground leading-relaxed text-lg font-light">
                       {feature.description}
                     </p>
