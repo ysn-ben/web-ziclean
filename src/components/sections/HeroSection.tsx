@@ -1,47 +1,17 @@
 "use client";
 
-import { useRef, useState } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   ShoppingCart, 
   CheckCircle2, 
   Leaf, 
   Droplets, 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX,
   Sparkles
 } from "lucide-react";
 
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const togglePlay = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!videoRef.current) return;
-    const newMuteState = !videoRef.current.muted;
-    videoRef.current.muted = newMuteState;
-    setIsMuted(newMuteState);
-  };
-
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-[var(--background)]">
       {/* Decorative premium background elements */}
@@ -87,7 +57,6 @@ export default function HeroSection() {
               <div className="flex flex-col items-end">
                 <div className="flex items-center gap-2">
                   <span className="text-4xl font-extrabold text-primary">230 دج</span>
-                  <span className="text-sm font-semibold text-accent-foreground/80 bg-accent px-2 py-0.5 rounded-md">عرض خاص</span>
                 </div>
                 <span className="text-sm text-muted-foreground mt-1">السعر للوحدة شامل الضريبة</span>
               </div>
@@ -109,79 +78,28 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Premium Video Block */}
+          {/* Premium Static Presentation Block */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             className="relative"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Main Interactive Video Card Container */}
+            {/* Main Interactive Product Card Container */}
             <div 
-              onClick={togglePlay}
-              className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(75,122,62,0.25)] border-4 border-white/90 bg-black aspect-[4/5] lg:aspect-[3/4] flex items-center justify-center cursor-pointer group group-hover:border-primary/20 transition-all duration-500"
+              className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(75,122,62,0.25)] border-4 border-white/90 bg-white aspect-[4/5] lg:aspect-[3/4] flex items-center justify-center group group-hover:border-primary/20 transition-all duration-500"
             >
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
-                autoPlay
-                loop
-                muted={isMuted}
-                playsInline
-                poster="/pictures/product-2.jpg"
-              >
-                <source src="/pictures/videp.mp4" type="video/mp4" />
-                <source src="/pictures/video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <Image
+                src="/pictures/product-2.jpg"
+                alt="ZiClean Premium Presentation"
+                width={700}
+                height={900}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
               
-              {/* Radial gradient to mask video edges & enhance readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
-
-              {/* Custom Overlay Controls (Visible on hover or when paused) */}
-              <AnimatePresence>
-                {(isHovered || !isPlaying) && (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 flex flex-col justify-between p-6 z-20"
-                  >
-                    {/* Top control bar: Mute option */}
-                    <div className="flex justify-start">
-                      <button
-                        onClick={toggleMute}
-                        className="p-3.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/20 transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg"
-                        title={isMuted ? "إلغاء كتم الصوت" : "كتم الصوت"}
-                      >
-                        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                      </button>
-                    </div>
-
-                    {/* Center control: Big Play/Pause Button */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.8, opacity: 0 }}
-                        className="p-6 rounded-full bg-primary/95 text-white backdrop-blur-sm shadow-2xl border border-white/20 pointer-events-auto hover:bg-primary transition-all duration-300 hover:scale-110 active:scale-95"
-                      >
-                        {isPlaying ? <Pause className="w-8 h-8 fill-current" /> : <Play className="w-8 h-8 fill-current ml-1" />}
-                      </motion.div>
-                    </div>
-
-                    {/* Bottom overlay message */}
-                    <div className="text-right pointer-events-none">
-                      <span className="inline-block px-3 py-1.5 rounded-lg bg-black/40 text-white/90 backdrop-blur-sm text-xs font-semibold tracking-wider">
-                        {isPlaying ? "فيديو تفاعلي - انقر للإيقاف المؤقت" : "فيديو تفاعلي - انقر للتشغيل"}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Radial gradient to mask image edges */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Glowing background halo */}
