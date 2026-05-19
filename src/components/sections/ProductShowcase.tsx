@@ -65,9 +65,9 @@ export default function ProductShowcase() {
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-xl font-bold text-foreground">رشاش رذاذ ذكي ومتساوي</h4>
+                  <h4 className="text-xl font-bold text-foreground">موزع ضغط متطور وعملي</h4>
                   <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                    مضخة رذاذ متطورة تغطي مساحات واسعة لتفتيت الدهون الصعبة دون هدر للسائل.
+                    مضخة ضغط انسيابية تتيح لك الحصول على الكمية المثالية من السائل المركز بضغطة واحدة دون تنقيط أو هدر.
                   </p>
                 </div>
               </div>
@@ -77,9 +77,9 @@ export default function ProductShowcase() {
                   <Eye className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-xl font-bold text-foreground">تصميم شفاف لمراقبة المتبقي</h4>
+                  <h4 className="text-xl font-bold text-foreground">عبوة بيضاء لحفظ المكونات الطبيعية</h4>
                   <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                    عبوة شفافة تمكنك من رؤية كمية المنظف المتبقية بوضوح لضمان التحضير والطلب المسبق.
+                    تصميم معتم باللون الأبيض الأنيق يحمي التركيبة الطبيعية 100% من تأثير الضوء للحفاظ على فعاليتها الفائقة لفترات طويلة.
                   </p>
                 </div>
               </div>
