@@ -13,15 +13,20 @@ export default function ProductShowcase() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Column: Widescreen Video Player */}
+          {/* Left Column: Premium Vertical Video Player (Smartphone-style Mockup) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="order-2 lg:order-1"
+            className="order-2 lg:order-1 flex justify-center"
           >
-            <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-black/95 shadow-[0_50px_100px_-20px_rgba(75,122,62,0.25)] border-4 border-white ring-1 ring-primary/10">
+            <div className="relative w-full max-w-[320px] aspect-[9/16] rounded-[3rem] overflow-hidden bg-black shadow-[0_30px_60px_-15px_rgba(75,122,62,0.3)] border-[8px] border-zinc-900 ring-4 ring-primary/20">
+              {/* Speaker / Camera Notch Mockup for phone aesthetic */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-5 bg-zinc-900 rounded-full z-20 flex items-center justify-center">
+                <div className="w-12 h-1 bg-zinc-800 rounded-full mr-3" />
+                <div className="w-2 h-2 bg-zinc-800 rounded-full" />
+              </div>
               <video
                 className="w-full h-full object-cover"
                 controls
